@@ -1,13 +1,12 @@
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import CustomerCard from './CustomerCard';
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import { ActiveContext } from '../Contexts/isActiveContext';
+import {  useEffect, useState } from 'react';
+import {  useActiveContext } from '../Contexts/isActiveContext';
 
   
   const VirtualizedList = () => {
-    const context = useContext(ActiveContext);
-    const {setActiveCustomer} = context;
+    const {setActiveCustomer,} = useActiveContext()
     interface Customer {
         name: string;
         title: string;

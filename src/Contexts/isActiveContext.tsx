@@ -1,5 +1,5 @@
 // src/contexts/ActiveContext.tsx
-import React, { createContext, useState, ReactNode, FC } from 'react';
+import React, { createContext, useState, ReactNode, FC, useContext } from 'react';
 
 interface Customer {
     name: string;
@@ -27,4 +27,12 @@ const ActiveProvider: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-export { ActiveProvider, ActiveContext };
+const useActiveContext = () => {
+  const context = useContext(ActiveContext);
+  if (context === undefined) {
+    throw new Error('useActiveContext must be used within an ActiveProvider');
+  }
+  return context;
+};
+
+export { ActiveProvider, ActiveContext,useActiveContext };
